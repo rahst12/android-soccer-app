@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SoccerPrototype</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="soccer_home_screen">Soccer Home Screen!!</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="players_list">Players List!</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="navDrawerTitles">
+        <item>Profile</item>
+        <item>Team</item>
+        <item>Standings</item>
+        <item>Stats</item>
+        <item>Formations</item>
+    </string-array>
+</resources>
