@@ -17,6 +17,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * The Main Activity is to hold (1) the navigation drawer on the left, (2) the nav bar on the top,
+ * and (3) control the swapping of the fragment/view that is shown in the center.
+ */
 public class MainActivity extends AppCompatActivity {
     private String[] mNavDrawerTitles;
     private DrawerLayout mDrawerLayout;
@@ -134,9 +138,30 @@ public class MainActivity extends AppCompatActivity {
 
     /** Swaps fragments in the main content view */
     private void selectItem(int position) {
-        // Create a new fragment and specify the planet to show based on position
-        Fragment fragment = new HomeScreen();
+
+        //Create a new fragment from the below
+        Log.d("soccerLogger", "selectItemNumber: " + position );
+        Fragment fragment;
         Bundle args = new Bundle();
+        switch (position)
+        {
+            //Profile View
+            case 0:
+                Log.d("soccerLogger", "Profile(): " + position );
+                fragment = new Profile();
+                break;
+            case 1:
+                Log.d("soccerLogger", "HomeScreen(): " + position );
+                fragment = new HomeScreen();
+                break;
+            default:
+                Log.d("soccerLogger", "Lost(): " + position );
+                fragment = new Lost();
+                break;
+        }
+
+        //The param is the position of the nav drawer that was clicked so the fragment can
+        //set the name of the nav bar
         args.putInt(HomeScreen.ARG_PARAM1, position);
         fragment.setArguments(args);
 

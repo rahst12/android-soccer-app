@@ -9,4 +9,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="players_list">Players List!</string>
+
+    <string name="this_isn_t_the_page_you_re_looking_for">This isn\'t the page you\'re looking for.  A view has most likely not been created for this link yet.</string>
+
 </resources>

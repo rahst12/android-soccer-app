@@ -1,5 +1,6 @@
 package com.example.rah.soccerprototype;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,15 +13,15 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeScreen.OnFragmentInteractionListener} interface
+ * {@link Lost.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HomeScreen#newInstance} factory method to
+ * Use the {@link Lost#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeScreen extends Fragment{
+public class Lost extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    public static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -29,7 +30,7 @@ public class HomeScreen extends Fragment{
 
     private OnFragmentInteractionListener mListener;
 
-    public HomeScreen() {
+    public Lost() {
         // Required empty public constructor
     }
 
@@ -39,11 +40,11 @@ public class HomeScreen extends Fragment{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeScreen.
+     * @return A new instance of fragment Lost.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeScreen newInstance(String param1, String param2) {
-        HomeScreen fragment = new HomeScreen();
+    public static Lost newInstance(String param1, String param2) {
+        Lost fragment = new Lost();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,8 +59,6 @@ public class HomeScreen extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        Log.d("soccerLogger", "mParam1: " + mParam1 );
     }
 
     @Override
@@ -72,7 +71,7 @@ public class HomeScreen extends Fragment{
         getActivity().setTitle(navBarName);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        return inflater.inflate(R.layout.fragment_lost, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
