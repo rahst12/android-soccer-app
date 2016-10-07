@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.rah.soccerprototype.HomeScreen;
-import com.example.rah.soccerprototype.MainActivity;
+import com.example.rah.soccerprototype.primaryview.MainActivity;
 import com.example.rah.soccerprototype.R;
 
 public class Login extends AppCompatActivity {
