@@ -1,5 +1,6 @@
 package com.example.rah.soccerprototype;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.rah.soccerprototype.login.WelcomeScreen;
 
 /**
  * The Main Activity is to hold (1) the navigation drawer on the left, (2) the nav bar on the top,
@@ -116,8 +119,16 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         // Handle your other action bar items...
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                Intent welcomeScreenIntent = new Intent(this, WelcomeScreen.class);
+                startActivity(welcomeScreenIntent);
+                return true;
 
-        return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
