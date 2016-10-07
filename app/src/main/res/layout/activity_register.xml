@@ -17,13 +17,13 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText_Email"
-        android:text="Email" />
+        android:hint="Email" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="First Name"
+        android:hint="First Name"
         android:ems="10"
         android:id="@+id/editText_First" />
 
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Last Name"
+        android:hint="Last Name"
         android:ems="10"
         android:id="@+id/editText_Last" />
 
@@ -41,7 +41,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_Password"
-        android:text="Password" />
+        android:hint="Password" />
 
     <Button
         android:text="Register"

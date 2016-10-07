@@ -17,7 +17,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText_Email"
-        android:text="Email"
+        android:hint="Email"
         android:gravity="center"/>
 
     <EditText
@@ -26,7 +26,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_Password"
-        android:text="Password"
+        android:hint="Password"
         android:gravity="center"/>
 
     <Button
