@@ -127,7 +127,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_logout:
                 Intent welcomeScreenIntent = new Intent(this, WelcomeScreen.class);
+                welcomeScreenIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(welcomeScreenIntent);
+                finish();
                 return true;
 
             default:

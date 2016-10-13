@@ -20,6 +20,8 @@ public class Login extends AppCompatActivity {
     public void onClick_HomeScreen(View view){
         Log.d("soccerprototype", "open home screen");
         Intent homeScreenIntent = new Intent(this, MainActivity.class);
+        homeScreenIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(homeScreenIntent);
+        finish();
     }
 }
