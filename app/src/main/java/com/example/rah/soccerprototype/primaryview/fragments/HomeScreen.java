@@ -1,15 +1,21 @@
 package com.example.rah.soccerprototype.primaryview.fragments;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.rah.soccerprototype.R;
+import com.example.rah.soccerprototype.rest.Greeting;
 
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +25,7 @@ import com.example.rah.soccerprototype.R;
  * Use the {@link HomeScreen#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeScreen extends Fragment{
+public class HomeScreen extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_PARAM1 = "param1";
@@ -73,8 +79,28 @@ public class HomeScreen extends Fragment{
         String navBarName = getResources().getStringArray(R.array.navDrawerTitles)[i];
         getActivity().setTitle(navBarName);
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        /**
+         * Because this is a fragment with a button on it, I found that I need to set the click listener
+         * via code insteaad of the convention of setting the method name in the fragment xml and
+         * having a method named the same in the Activity.  The MainActivity class could pick up the
+         * button click, but then you can't access the proper view, and update the textview's on this
+         * fragment screen.  The best way I found was to do what's here below:
+         */
+        View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
+        Button refreshButton = (Button) view.findViewById(R.id.buttonRefresh);
+        refreshButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("soccerprototype", "Calling Spring for a test rest service..");
+                new HttpRequestTask().execute();
+            }
+        });
+
+        //Return the proper view... by default you'd return an inflated view here in one line...
+        // Instead, return the view that's already inflated with the refresh button onclick
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -114,5 +140,63 @@ public class HomeScreen extends Fragment{
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    //Pretty standard setup from here:
+    //http://spring.io/guides/gs/consuming-rest-android/
+    //Fragments don't contain the findViewById, so you have to call getView()
+    private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
+        View view;
+
+        public HttpRequestTask(){
+            //Need to call getView() because this is a Fragment.. It will get the top level View.
+            //Info: http://stackoverflow.com/questions/6495898/findviewbyid-in-fragment
+            this.view = getView();
+        }
+
+        @Override
+        protected Greeting doInBackground(Void... params) {
+            try {
+                final String url = "http://rest-service.guides.spring.io/greeting";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                Greeting greeting = restTemplate.getForObject(url, Greeting.class);
+                return greeting;
+            } catch (Exception e) {
+                Log.e("HomeScreen", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Greeting greeting) {
+            //We want to take pieces of the Greeting object and put it on the Home Screen
+            //fragment view, so we need to get the View.
+            this.view = getView();
+            //Verify the view isn't null (it shouldn't be using getView, but was when I was using another method to get the view)
+            if (view != null)
+            {
+                //Get the two textViews
+                TextView greetingIdText = (TextView) view.findViewById(R.id.springGreetingsId);
+                TextView greetingContentText = (TextView) view.findViewById(R.id.springGreetings);
+
+                //Verify that Greeting is not null.  It is the object returned from the Spring Rest
+                //test interface.
+                if (greeting != null) {
+                    //Set the text in both of them:
+                    greetingIdText.setText(greeting.getId());
+                    greetingContentText.setText(greeting.getContent());
+                } else {
+                    //If Greeting is null, assume the sevice is down.
+                    //Set the text in both of them:
+                    greetingIdText.setText("Service is down.");
+                    greetingContentText.setText("Service is down.");
+                }
+
+            } else {
+                Log.d("soccer", "view is null");
+            }
+        }
     }
 }

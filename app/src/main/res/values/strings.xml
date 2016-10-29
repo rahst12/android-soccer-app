@@ -4,7 +4,7 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="soccer_home_screen">Soccer Home Screen!!</string>
+    <string name="soccer_home_screen">The following is a test of Spring Rest.  Click the refresh button to ping the Spring REST API.  It\'s possible you might get a 400 error if their service isn\'t up.</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

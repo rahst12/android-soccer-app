@@ -2,12 +2,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_home_screen"
     tools:context="com.example.rah.soccerprototype.primaryview.fragments.HomeScreen">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/soccer_home_screen" />
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/soccer_home_screen" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Spring Rest Test ID: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/springGreetingsIdLabel"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="_id_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/springGreetingsId"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Spring Rest Test Text: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/springGreetingsLabel"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="_default text_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/springGreetings"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Button
+            android:text="Refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:id="@+id/buttonRefresh" />
+
+    </LinearLayout>
 
 </FrameLayout>
